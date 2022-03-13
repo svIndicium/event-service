@@ -10,4 +10,4 @@ jobs:
     needs: build
     uses: svIndicium/Workflows/.github/workflows/gradle-docker-build.yml@master
     with:
-      tag: svindicium/event-service:latest
+      tag: ghcr.io/${{ github.repository }}:latest
