@@ -1,0 +1,37 @@
+plugins {
+    id "application"
+    id "com.github.johnrengelman.shadow" version "7.1.1"
+}
+
+group = "hu.indicium.dev.services"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/svIndicium/*")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation "hu.indicium.dev.services:skeleton:0.0.5"
+    implementation "hu.indicium.dev:model:0.0.2"
+}
+
+application {
+    mainClass.set("hu.indicium.dev.services.Application")
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+
+
