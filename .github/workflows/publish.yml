@@ -1,0 +1,15 @@
+name: Gradle Build
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    uses: svIndicium/Workflows/.github/workflows/gradle-build.yml@master
+  build-docker:
+    needs: build
+    uses: svIndicium/Workflows/.github/workflows/gradle-docker-build.yml@master
+    with:
+      tag: ghcr.io/${{ github.repository }}:latest
