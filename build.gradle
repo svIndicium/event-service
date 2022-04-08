@@ -1,6 +1,6 @@
 plugins {
-    id "application"
     id "com.github.johnrengelman.shadow" version "7.1.1"
+    id "io.micronaut.application" version "${micronautGradlePluginVersion}"
 }
 
 group = "hu.indicium.dev.services"
@@ -20,7 +20,11 @@ repositories {
 }
 
 dependencies {
-    implementation "hu.indicium.dev.services:skeleton:0.0.5"
+    annotationProcessor "org.projectlombok:lombok:1.18.22"
+    annotationProcessor "io.micronaut.data:micronaut-data-processor"
+
+    implementation "hu.indicium.dev.lib:general:0.0.2-dev"
+    implementation "hu.indicium.dev.services:skeleton:0.0.6-dev"
     implementation "hu.indicium.dev:model:0.0.2"
 }
 
