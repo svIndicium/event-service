@@ -8,11 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@MappedEntity
-public class Event {
+data class Event(
     @Id
     private String id;
 
@@ -25,4 +21,4 @@ public class Event {
     private LocalDateTime startDateTime;
 
     private LocalDateTime endDatetime;
-}
+)
