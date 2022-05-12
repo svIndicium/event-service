@@ -1,9 +1,16 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.1"
+    id "org.jetbrains.kotlin.jvm" version "${kotlinVersion}"
+    id "org.jetbrains.kotlin.kapt" version "${kotlinVersion}"
+    id "org.jetbrains.kotlin.plugin.allopen" version "${kotlinVersion}"
     id "io.micronaut.application" version "${micronautGradlePluginVersion}"
 }
 
 group = "hu.indicium.dev.services"
+
+shadowJar {
+    mergeServiceFiles()
+}
 
 repositories {
     mavenLocal()
@@ -20,11 +27,9 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor "org.projectlombok:lombok:1.18.22"
-    annotationProcessor "io.micronaut.data:micronaut-data-processor"
-
-    implementation "hu.indicium.dev.lib:general:0.0.2-dev"
-    implementation "hu.indicium.dev.services:skeleton:0.0.6-dev"
+    kapt "io.micronaut:micronaut-inject-java:$micronautVersion"
+    implementation "hu.indicium.dev.lib:general:0.0.2"
+    implementation "hu.indicium.dev.services:skeleton:$skeletonVersion"
     implementation "hu.indicium.dev:model:0.0.2"
 }
 
@@ -32,10 +37,25 @@ application {
     mainClass.set("hu.indicium.dev.services.Application")
 }
 
-java {
-    sourceCompatibility = JavaVersion.toVersion("11")
-    targetCompatibility = JavaVersion.toVersion("11")
+tasks {
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+            javaParameters = true
+        }
+    }
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+            javaParameters = true
+        }
+    }
 }
 
+test {
+    useJUnitPlatform()
+}
 
-
+allOpen {
+    annotation("io.micronaut.aop.Around")
+}
