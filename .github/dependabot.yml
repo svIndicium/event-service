@@ -2,7 +2,7 @@ version: 2
 registries:
   github-package-registry:
     type: maven-repository
-    url: https://maven.pkg.github.com/svIndicium
+    url: https://maven.pkg.github.com/svIndicium/*
     username: ${{ secrets.GH_PKG_USERNAME }}
     password: ${{ secrets.DEPENDABOT_TOKEN }}
 updates:
