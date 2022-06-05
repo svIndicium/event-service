@@ -6,7 +6,7 @@ ext {
     kotlinVersion = "1.6.21"
 
     generalLibVersion = "0.0.3"
-    skeletonVersion = "0.0.15"
+    skeletonVersion = "0.0.16"
 
     supportDependencies = [
             micronaut_inject_java: "io.micronaut:micronaut-inject-java",
