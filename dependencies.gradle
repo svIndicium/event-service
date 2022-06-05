@@ -1,17 +1,17 @@
 ext {
-    micronautVersion = "3.4.0"
+    micronautVersion = "3.4.3"
     micronautGradlePluginVersion = "3.4.1"
     shadowJarVersion = "7.1.2"
 
     kotlinVersion = "1.6.21"
 
     generalLibVersion = "0.0.3"
-    skeletonVersion = "0.0.12"
+    skeletonVersion = "0.0.15"
 
     supportDependencies = [
             micronaut_inject_java: "io.micronaut:micronaut-inject-java",
 
-            indicium_general_lib: "hu.indicium.dev.lib:general:$generalLibVersion",
-            indicium_skeleton: "hu.indicium.dev.services:skeleton:$skeletonVersion",
+            indicium_general_lib : "hu.indicium.dev.lib:general:$generalLibVersion",
+            indicium_skeleton    : "hu.indicium.dev.services:skeleton:$skeletonVersion",
     ]
 }

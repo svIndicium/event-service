@@ -11,4 +11,7 @@ updates:
     registries:
       - github-package-registry
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "monday"
+      time: 09:00
+      timezone: "Europe/Amsterdam"
